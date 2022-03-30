@@ -4,6 +4,10 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios'
 import VideoModal from './Video/VideoModal';
+import SimpleSlider from '../../components/SimpleSlider';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -17,9 +21,9 @@ const Container = styled.div`
 
 /* Main Component */
 const Home = props => {
-  const apiKey = "AIzaSyD4FeJ4mZOG_tS_t57zkJvjWj3jSbkqT-I"; // process.env.REACT_APP_API_KEY;
-  const channelId = "UCJUsz3WJ3aLVO1vMEDIDsEQ";
+
   const [videos, setVideos] = useState([]);
+  const [sliders, setSliders] = useState([]);
 
   /* Props */
   const {
@@ -40,18 +44,43 @@ const Home = props => {
       id: {
         videoId: "pEgnnktqCVQ"
       }
+    }, {
+      id: {
+        videoId: "J1hhkqqhuZs"
+      }
+    }, {
+      id: {
+        videoId: "9ABUOD1icL8"
+      }
     }])
+
+    setSliders([{
+      id: 1,
+      name: "hello",
+      image: "https://cdn.pixabay.com/photo/2021/09/12/07/58/banner-6617553__340.jpg"
+    },
+    {
+      id: 2,
+      name: "hi",
+      image: "https://cdn.pixabay.com/photo/2015/10/29/14/38/web-1012467__340.jpg"
+    }
+    ])
   }, []);
 
 
   /* Renderer */
   return (
     <Container className={className}>
+      <SimpleSlider sliders={sliders} />
       <div>
         {
           videos.map(video => {
             return (
-              <VideoModal key={video.id.videoId} video={video}></VideoModal>
+              <Card sx={{ minWidth: 275 }}>
+                <CardContent>
+                  <VideoModal key={video.id.videoId} video={video}></VideoModal>
+                </CardContent>
+              </Card>
             )
           })
         }

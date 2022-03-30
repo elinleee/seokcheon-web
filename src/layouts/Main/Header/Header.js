@@ -14,7 +14,10 @@ const Container = styled.div`
   top: 0;
   left: 0;
   height: 80px;
+  margin-bottom: 30px;
   width: 100%;
+  z-index: 100;
+  background: white;
 `;
 
 /* Main Compoent */

@@ -30,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
 const Container = styled.div`
   padding-top: 130px;
   height: 100%;
-  width: 1080px;
+  // width: 1300px;
   margin: 0 auto;
   // padding-left: 270px;
 `;
