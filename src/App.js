@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
+import { hot } from 'react-hot-loader'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Home from './routes/Home'
+import Board from './routes/Board'
+import Product from './routes/Product'
+import Login from './routes/Login'
+
+import Main from './layouts/Main/Main'
+
+class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <Main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/board" element={<Board />} />
+            <Route path="/product" element={<Product />} />
+            <Route path="/login" element={<Login />} />
+            {/* <Route path="users/*" element={<Users />} /> */}
+          </Routes>
+        </Main>
+      </BrowserRouter>
+    );
+  }
 }
 
-export default App;
+export default hot(module)(App);
